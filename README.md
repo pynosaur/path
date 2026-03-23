@@ -7,7 +7,7 @@ More sophisticated than `find`, with layers (depth control), pattern matching, s
 ## Install
 
 ```bash
-pget install pynosaur/path
+pget install path
 ```
 
 ## Usage
