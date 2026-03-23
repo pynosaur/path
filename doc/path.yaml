@@ -1,4 +1,72 @@
 NAME: path
-VERSION: 0.1.0
-DESCRIPTION: Pure Python file and directory finder powered by pathlib
+VERSION: "0.1.0"
+DESCRIPTION: >
+  Pure Python file and directory finder powered by pathlib. Search for files
+  and directories with glob patterns, extension filters, name matching, depth
+  control (layers), size filtering, modification date, and tree view output.
+  A more intuitive and featureful alternative to find. Stdlib only, no dependencies.
+USAGE:
+  - "path [ROOT] [OPTIONS]"
+  - "path . -f"
+  - "path . -d"
+  - "path . -f -p '*.py'"
+  - "path . --tree -l 3"
+  - "path . -f -L"
+  - "path . --count"
+OPTIONS:
+  - "-f, --files                      Find files only"
+  - "-d, --dirs                       Find directories only"
+  - "-p, --pattern PATTERN            Glob pattern (e.g. '*.py', 'test_*')"
+  - "-e, --ext EXT                    Filter by extension (e.g. py, txt)"
+  - "-n, --name NAME                  Name contains string (case-insensitive)"
+  - "-l, --layers N                   Max depth (0 = root only, default: unlimited)"
+  - "-s, --size SIZE                  Filter by size (+1M = larger, -100K = smaller)"
+  - "-m, --modified DAYS              Modified within N days"
+  - "--hidden                         Include hidden files and directories"
+  - "--count                          Show count only (files and dirs)"
+  - "--abs                            Show absolute paths"
+  - "--tree                           Tree view output with connectors"
+  - "-L, --long                       Show file sizes alongside names"
+  - "-v, --version                    Show version"
+  - "-h, --help                       Show help"
+EXAMPLES:
+  - "path                             # List everything in current directory"
+  - "path . -f                        # Files only"
+  - "path . -d                        # Directories only"
+  - "path . -f -p '*.py'             # Python files by glob"
+  - "path . -f -e py                  # Python files by extension"
+  - "path . -l 2                      # Max 2 layers deep"
+  - "path /usr -d -n bin              # Dirs containing 'bin' under /usr"
+  - "path . -f -s +1M                 # Files larger than 1MB"
+  - "path . -f -s -100K               # Files smaller than 100KB"
+  - "path . -f -m 7                   # Files modified in last 7 days"
+  - "path . --tree -l 3               # Tree view, 3 layers"
+  - "path . -f -L                     # List files with sizes"
+  - "path . --count                   # Count files and dirs"
+  - "path . -f --abs                  # Absolute paths"
+  - "path . --hidden                  # Include dotfiles and hidden dirs"
+SIZE_SUFFIXES:
+  - "B                                Bytes"
+  - "K                                Kilobytes (1024)"
+  - "M                                Megabytes (1024^2)"
+  - "G                                Gigabytes (1024^3)"
+  - "+SIZE                            Larger than SIZE"
+  - "-SIZE                            Smaller than SIZE"
+OUTPUT: >
+  Default output lists relative paths, one per line. Directories are shown in
+  blue with a trailing slash. Tree mode draws connectors with color coding:
+  blue for dirs, green for executables, cyan for symlinks. Long mode (-L) shows
+  human-readable file sizes. Count mode shows totals only.
+  Exit code 0 on success or when no matches found.
 AUTHOR: "@spacemany2k38"
+DATE: "2026-03-23"
+NOTES:
+  - "Root argument defaults to current directory (.) if omitted."
+  - "Hidden files/dirs (starting with .) are excluded by default."
+  - "Layers control depth: -l 0 shows nothing, -l 1 shows root contents only."
+  - "Pattern uses Python's pathlib.Path.match() — supports * and ** globs."
+  - "Name filter is case-insensitive substring match."
+  - "Size filter prefix: + means larger than, - means smaller than."
+  - "Directories are always sorted before files at each level."
+  - "PermissionError on directories is silently skipped."
+  - "Pure Python — no external dependencies."
