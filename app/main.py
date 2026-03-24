@@ -28,21 +28,40 @@ def build_parser():
         ),
     )
 
-    parser.add_argument("root", nargs="?", default=".", help="starting directory (default: .)")
+    parser.add_argument(
+        'root',
+        nargs='?',
+        default='.',
+        help='starting directory (default: .)',
+    )
     parser.add_argument("-f", "--files", action="store_true", help="find files only")
-    parser.add_argument("-d", "--dirs", action="store_true", help="find directories only")
+    parser.add_argument(
+        '-d',
+        '--dirs',
+        action='store_true',
+        help='find directories only',
+    )
     parser.add_argument("-p", "--pattern", help="glob pattern (e.g. '*.py', 'test_*')")
     parser.add_argument("-e", "--ext", help="filter by extension (e.g. py, txt)")
     parser.add_argument("-n", "--name", help="name contains string")
     parser.add_argument("-l", "--layers", type=int, help="max depth (0 = root only)")
     parser.add_argument("-s", "--size", help="filter by size (+1M, -100K)")
     parser.add_argument("-m", "--modified", type=int, help="modified within N days")
-    parser.add_argument("--hidden", action="store_true", help="include hidden files/dirs")
+    parser.add_argument(
+        '--hidden',
+        action='store_true',
+        help='include hidden files/dirs',
+    )
     parser.add_argument("--count", action="store_true", help="show count only")
     parser.add_argument("--abs", action="store_true", help="show absolute paths")
     parser.add_argument("--tree", action="store_true", help="tree view output")
     parser.add_argument("-L", "--long", action="store_true", help="show file sizes")
-    parser.add_argument("-v", "--version", action="version", version=f"path {doc.get('version', '0.1.0')}")
+    parser.add_argument(
+        '-v',
+        '--version',
+        action='version',
+        version=f"path {doc.get('version', '0.1.0')}",
+    )
 
     return parser
 

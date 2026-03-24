@@ -48,7 +48,10 @@ def matches_filters(entry, opts):
     if opts.get("dirs_only") and not entry.is_dir():
         return False
 
-    if not opts.get("hidden") and any(p.startswith(".") for p in entry.relative_to(opts["root"]).parts):
+    if (
+        not opts.get("hidden") and
+        any(p.startswith(".") for p in entry.relative_to(opts["root"]).parts)
+    ):
         return False
 
     name = entry.name
