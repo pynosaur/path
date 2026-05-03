@@ -1,5 +1,5 @@
 NAME: path
-VERSION: "0.1.1"
+VERSION: "0.1.2"
 DESCRIPTION: >
   Pure Python file and directory finder powered by pathlib. Search for files
   and directories with glob patterns, extension filters, name matching, depth
